@@ -1,0 +1,134 @@
+TIL - 2일차
+
+1일차에는 컴퓨터에 내장된 Terminal을 이용해서 VSCode를 설치 및 설정하는 방법을 배웠는데,
+2일차에는 VSCode를 본격적으로 사용하는 법을 배웠다.
+사용된 명령어들은 아래와 같은데, 기본적으로 Terminal에서 쓴 명령어들과 비슷해서 수월했다.
+
+문제점이라고 할만한 것은 commit을 이용해서 README.md라는 파일 안에 넣고 싶은 내용을 맘대로 써봤는데
+이상하게도 정상적으로 입력되지 않고 자꾸 에러가 났었던 부분이었다.
+
+git commit -m "feat: 배고파"
+
+라는 명령어를 사용했는데 무엇이 문제인지.
+아마 git commit -> i 를 통해서 직접 인서트해야하나 싶긴했는데,
+맘대로 내용을 정해서 넣어도 되는건지 묻는건 조금(?) 쓸데없어 보이기도 해서 더 건드리지는 않았다.
+
+명령어를 넣다가 철자 하나를 빼먹기도 했는데 (예를 들면 user를 uer로 입력한다거나)
+다행히도 잘못된 명령어를 회수하는 방법을 알려주셔서 다행이었다. <- 이 부분은 사실 특별히 에러가 났다는 메시지가 뜨지 않아서 혼란스러웠다.
+
+역시 처음에 배우면서 가장 어렵게 느껴지는 건, 어디서부터 어디까지 알려주는대로 해야하는지, 어떤 거는 내 맘대로 해도 되는지,
+잘못됐을 때 어떻게 이전 상태로 복구하는지 등등..인 것 같다.
+
+아직까지는 알려주시는대로 따라가기만 하면돼서 다행 ㅎ
+기본을 잘 배워야 나중에 프로젝트를 직접 해볼텐데..라고 생각했던 TIL이었다.
+
+<오늘의 명령어 모음>
+
+	rm README.md
+		파일 삭제
+
+	mkdir data
+
+	mkdir system
+
+	rm -rf kant/
+		강제영구 삭제
+
+	echo "# Markdown Tutorial" > README.md
+
+	code .
+		
+	clear
+
+	ctrl + l
+		clear
+
+
+< vscode >
+
+	git —version	
+
+	git config —list
+
+	git config —global user.email “kanedward04@gmail.com”
+
+	git config —global —unset uer.email “kanedward04@gmail.com”
+
+	git init
+		git 폴더 초기화
+
+	cd .git
+
+	cd ..
+	
+	git status
+
+	touch README.md
+	git status 
+	Untracked files
+		git이 아직 트랙킹하고 있지 않은, 관리하고 있지 않은
+
+	git add README.md
+	git status
+	녹색 -> staging 단계에 있음
+
+	git commit -m “feat: Add README.md”
+	git status
+
+	git log
+		내용 불러오기
+
+	# Markdown 튜토리얼
+	command + shift + v
+	
+	파일 수정 및 저장
+	->	파일을 수정하고 저장한 후에는 git add 를 통해서 modified된 파일을 staging 에 다시 올려줘야 함
+
+	git commit
+	i
+		insert	
+	esc
+	:w
+		내용 작성 및 추가
+	:wq
+		저장하고 나오기
+
+	## 뷸렛 표기
+		-
+		-
+
+	## 숫자 표기 
+		1.
+		2.
+
+	git add .
+		
+	git commit -m “feat: 뷸렛 사용법 추가”
+
+	git log —oneline	
+	
+	git checkout 2f59886
+		헤드를 내용 삽입한 위치로 이동
+
+	git log —oneline —all
+	
+	git remote -v
+		아무것도 안뜨면 연결이 안돼있다는거
+
+	git remote add origin https://github.com/Kanedward04/kant.git
+
+	git remote -v
+		(fetch) - > 문제가 있는지 체크해보는 거
+		(push) - > 리파지토리에 올리는 거? 암튼 올리는 거
+
+	git push origin main
+		main 이라는 브랜치로 올린다는 거
+
+
+——————————
+
+Git에서 각 커밋에 부여되는, 내용이 조금만 바뀌어도 완전히 달라지는 40자리 고유 ID를 무엇이라고 하는가?
+SHA 해시는 커밋 내용을 기반으로 생성되는 40자리 고유 ID로, 내용이 조금이라도 바뀌면 해시 값이 완전히 달라져 이력 변조를 사실상 탐지할 수 있게 해줍니다.
+
+Git log 명령어에서 현재 브랜치뿐 아니라 모든 브랜치의 커밋을 함께 표시하고 싶을 때 사용하는 옵션은 무엇인가?--all 옵션을 사용하면 현재 브랜치뿐 아니라 모든 브랜치의 커밋을 함께 표시할 수 있습니다. 이 옵션이 없으면 기본적으로 현재 브랜치의 커밋만 보이게 됩니다.
+	
